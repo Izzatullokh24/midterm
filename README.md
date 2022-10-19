@@ -413,15 +413,17 @@ Use arrow keys to move the turtle.
 Use G|B|V|C|D|E|R|T keys to rotate to absolute orientations. 'F' to cancel a rotation.
 'Q' to quit.
 
-
+```
 
 
 # Install Colcon
 
 instaling colcon by entering following commands:
+
 ```
 sudo apt install python3-colcon-common-extensions
 ```
+
 ```
 izzatullokh@izzatullokh-virtual-machine:~$ sudo apt install python3-colcon-common-extensions
 [sudo] password for izzatullokh: 
@@ -436,6 +438,7 @@ Use 'sudo apt autoremove' to remove them.
 izzatullokh@izzatullokh-virtual-machine:~$ 
 ```
 ## Creating a workspace and add some source to it:
+
 ```
 
 izzatullokh@izzatullokh-virtual-machine:~$ mkdir -p ~/ros2_ws/src
@@ -456,9 +459,11 @@ source /opt/ros/humble/setup.bash
 izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ git clone https://github.com/ros2/examples src/examples -b humble
 fatal: destination path 'src/examples' already exists and is not an empty directory.
 izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ 
+
 ```
 
 ## Building a workspace
+
 ```
 izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ colcon build --symlink-install
 [3.312s] WARNING:colcon.colcon_core.package_selection:Some selected packages are already built in one or more underlay workspaces:
@@ -508,9 +513,12 @@ Summary: 0 packages finished [6.30s]
   1 package had stderr output: action_tutorials_interfaces
   25 packages not processed
 izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ 
+
 ```
 ## Run tests
+
 ### To run tests for the packages we just built, run the following:
+
 ```
 izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ colcon test
 Starting >>> action_tutorials_interfaces
@@ -671,6 +679,7 @@ Summary: 27 packages finished [1min 28s]
 izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ 
 ```
 ## Source the enviroment
+
 ````
 izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ . install/setup.bash
 ```
@@ -678,26 +687,38 @@ izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ . install/setup.bash
 
 # Create a workspace 
 ## Source  Ros2 evniroment
+
 ```
  source /opt/ros/humble/setup.bash
 
 ```
+
 ## Creating a new directory
+
 ```
 mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
+
 ```
+
 ## Clone a sample repo
+
 ```
 git clone https://github.com/ros/ros_tutorials.git -b humble-devel
+
 ```
+
 ## Resolve the dependencies
+
 ```
 # cd if you're still in the ``src`` directory with the ``ros_tutorials`` clone
 cd ..
 rosdep install -i --from-path src --rosdistro humble -y
+
 ```
+
 ```
+
 izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ source /opt/ros/humble/setup.bash
 izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ mkdir -p ~/ros2_ws/src
 cd ~/ros2_ws/src
