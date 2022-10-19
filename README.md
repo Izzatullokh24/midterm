@@ -677,11 +677,14 @@ Finished <<< launch_testing_examples [22.9s]
 Summary: 27 packages finished [1min 28s]
   10 packages had stderr output: examples_rclpy_executors examples_rclpy_guard_conditions examples_rclpy_minimal_action_client examples_rclpy_minimal_action_server examples_rclpy_minimal_client examples_rclpy_minimal_publisher examples_rclpy_minimal_service examples_rclpy_minimal_subscriber examples_rclpy_pointcloud_publisher launch_testing_examples
 izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ 
+
 ```
 ## Source the enviroment
 
 ````
+
 izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ . install/setup.bash
+
 ```
 
 
