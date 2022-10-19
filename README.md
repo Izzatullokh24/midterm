@@ -190,3 +190,57 @@ izzatullokh@izzatullokh-virtual-machine:~/ros2_humble$
 ```
 ## 1 Install turtlesim
 ### Install the turtlesim package for our ROS 2 distro:
+```
+izzatullokh@izzatullokh-virtual-machine:~$ # Replace ".bash" with your shell if you're not using bash
+# Possible values are: setup.bash, setup.sh, setup.zsh
+source /opt/ros/humble/setup.bash
+izzatullokh@izzatullokh-virtual-machine:~$ sudo apt update
+
+sudo apt install ros-humble-turtlesim
+[sudo] password for izzatullokh: 
+Hit:1 http://packages.ros.org/ros2/ubuntu jammy InRelease
+Get:2 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
+Hit:3 http://kr.archive.ubuntu.com/ubuntu jammy InRelease
+Get:4 http://kr.archive.ubuntu.com/ubuntu jammy-updates InRelease [114 kB]
+Get:5 http://security.ubuntu.com/ubuntu jammy-security/main amd64 DEP-11 Metadata [13.0 kB]
+Get:6 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 DEP-11 Metadata [12.4 kB]
+Get:7 http://kr.archive.ubuntu.com/ubuntu jammy-backports InRelease [99.8 kB]
+Get:8 http://kr.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [655 kB]
+Get:9 http://kr.archive.ubuntu.com/ubuntu jammy-updates/main i386 Packages [337 kB]
+Get:10 http://kr.archive.ubuntu.com/ubuntu jammy-updates/main amd64 DEP-11 Metadata [92.8 kB]                                                       
+Get:11 http://kr.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [434 kB]                                                           
+Get:12 http://kr.archive.ubuntu.com/ubuntu jammy-updates/universe i386 Packages [281 kB]                                                            
+Get:13 http://kr.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 DEP-11 Metadata [248 kB]                                                    
+Get:14 http://kr.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 DEP-11 Metadata [940 B]                                                   
+Get:15 http://kr.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 DEP-11 Metadata [12.6 kB]                                                 
+Fetched 2,411 kB in 11s (213 kB/s)                                                                                                                  
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+140 packages can be upgraded. Run 'apt list --upgradable' to see them.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+ros-humble-turtlesim is already the newest version (1.4.2-1jammy.20220908.233909).
+The following packages were automatically installed and are no longer required:
+  python3-catkin-pkg python3-rosdistro
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 140 not upgraded.
+```
+## Checking that the package installed:
+```
+izzatullokh@izzatullokh-virtual-machine:~$ ros2 pkg executables turtlesim
+turtlesim draw_square
+turtlesim mimic
+turtlesim turtle_teleop_key
+turtlesim turtlesim_node
+izzatullokh@izzatullokh-virtual-machine:~$
+```
+# Start turtelism
+```
+izzatullokh@izzatullokh-virtual-machine:~$ ros2 run turtlesim turtlesim_node
+Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.
+[INFO] [1666155565.273879580] [turtlesim]: Starting turtlesim with node name /turtlesim
+[INFO] [1666155565.316003811] [turtlesim]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]
+
+```
