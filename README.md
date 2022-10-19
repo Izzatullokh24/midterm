@@ -681,11 +681,9 @@ izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$
 ```
 ## Source the enviroment
 
-````
 
 izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ . install/setup.bash
 
-```
 
 
 # Create a workspace 
@@ -789,3 +787,118 @@ Summary: 0 packages finished [4.26s]
 izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ 
 
 ```
+
+# Creating a package
+```
+izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ ros2 pkg create --build-type ament_python py_pubsub
+going to create a new package
+package name: py_pubsub
+destination directory: /home/izzatullokh/ros2_ws
+package format: 3
+version: 0.0.0
+description: TODO: Package description
+maintainer: ['izzatullokh <izzatullokh@todo.todo>']
+licenses: ['TODO: License declaration']
+build type: ament_python
+dependencies: []
+creating folder ./py_pubsub
+creating ./py_pubsub/package.xml
+creating source folder
+creating folder ./py_pubsub/py_pubsub
+creating ./py_pubsub/setup.py
+creating ./py_pubsub/setup.cfg
+creating folder ./py_pubsub/resource
+creating ./py_pubsub/resource/py_pubsub
+creating ./py_pubsub/py_pubsub/__init__.py
+creating folder ./py_pubsub/test
+creating ./py_pubsub/test/test_copyright.py
+creating ./py_pubsub/test/test_flake8.py
+creating ./py_pubsub/test/test_pep257.py
+
+[WARNING]: Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
+It is recommended to use one of the ament license identitifers:
+Apache-2.0
+BSL-1.0
+BSD-2.0
+BSD-2-Clause
+BSD-3-Clause
+GPL-3.0-only
+LGPL-3.0-only
+MIT
+MIT-0
+
+```
+## Write a publisher node 
+```
+izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$ wget https://raw.githubusercontent.com/ros2/examples/humble/rclpy/topics/minimal_publisher/examples_rclpy_minimal_publisher/publisher_member_function.py
+--2022-10-19 15:03:21--  https://raw.githubusercontent.com/ros2/examples/humble/rclpy/topics/minimal_publisher/examples_rclpy_minimal_publisher/publisher_member_function.py
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.111.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 1576 (1.5K) [text/plain]
+Saving to: ‘publisher_member_function.py’
+
+publisher_member_fu 100%[===================>]   1.54K  --.-KB/s    in 0.001s  
+
+2022-10-19 15:03:21 (2.51 MB/s) - ‘publisher_member_function.py’ saved [1576/1576]
+
+izzatullokh@izzatullokh-virtual-machine:~/ros2_ws$
+
+```
+## I opened my code editor visual studio and wrote following code:
+```
+# Copyright 2016 Open Source Robotics Foundation, Inc.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+import rclpy
+from rclpy.node import Node
+
+from std_msgs.msg import String
+
+
+class MinimalPublisher(Node):
+
+    def __init__(self):
+        super().__init__('minimal_publisher')
+        self.publisher_ = self.create_publisher(String, 'topic', 10)
+        timer_period = 0.5  # seconds
+        self.timer = self.create_timer(timer_period, self.timer_callback)
+        self.i = 0
+
+    def timer_callback(self):
+        msg = String()
+        msg.data = 'Hello World: %d' % self.i
+        self.publisher_.publish(msg)
+        self.get_logger().info('Publishing: "%s"' % msg.data)
+        self.i += 1
+
+
+def main(args=None):
+    rclpy.init(args=args)
+
+    minimal_publisher = MinimalPublisher()
+
+    rclpy.spin(minimal_publisher)
+
+    # Destroy the node explicitly
+    # (optional - otherwise it will be done automatically
+    # when the garbage collector destroys the node object)
+    minimal_publisher.destroy_node()
+    rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
+```
+
